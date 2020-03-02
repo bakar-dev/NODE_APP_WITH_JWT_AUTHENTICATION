@@ -19,6 +19,6 @@ mongoose.connect(
 app.use(express.json());
 
 app.use("/api/user", authRoutes);
-app.use("/api/posts", postRoutes);
+app.use("/api", postRoutes);
 
 app.listen(5000, () => console.log("Server is Up and Running..."));
