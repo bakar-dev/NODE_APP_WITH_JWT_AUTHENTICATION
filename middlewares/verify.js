@@ -1,7 +1,8 @@
 const jwt = require("jsonwebtoken");
 const User = require("../model/User");
 
-const auth = async function(req, res, next) {
+//authenticate user token
+const authentication = async function(req, res, next) {
   const token = req.header("auth-token");
   if (!token) return res.status(401).send("Access denied!");
 
@@ -15,4 +16,14 @@ const auth = async function(req, res, next) {
   }
 };
 
-module.exports = auth;
+//authorize access to specific USer Role
+const authorize = (...roles) => {
+  return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return res.status(400).send("Not Authorized");
+    }
+    next();
+  };
+};
+
+module.exports = { authentication, authorize };

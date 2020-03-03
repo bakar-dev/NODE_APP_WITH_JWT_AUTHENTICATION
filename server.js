@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 //import routes
 const authRoutes = require("./routes/auth");
-const postRoutes = require("./routes/post");
+const applicationRoutes = require("./routes/application");
 
 dotenv.config();
 
@@ -19,6 +19,6 @@ mongoose.connect(
 app.use(express.json());
 
 app.use("/api/user", authRoutes);
-app.use("/api", postRoutes);
+app.use("/api/applications", applicationRoutes);
 
 app.listen(5000, () => console.log("Server is Up and Running..."));
