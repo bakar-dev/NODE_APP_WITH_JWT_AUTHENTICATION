@@ -54,6 +54,10 @@ const applicationSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.ObjectId,
     ref: "User"
+  },
+  applicants: {
+    type: [mongoose.Schema.ObjectId],
+    ref: "User"
   }
 });
 

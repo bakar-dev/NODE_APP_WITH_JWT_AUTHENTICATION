@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  applications: {
+    type: [mongoose.Schema.ObjectId],
+    ref: "Application"
   }
 });
 
